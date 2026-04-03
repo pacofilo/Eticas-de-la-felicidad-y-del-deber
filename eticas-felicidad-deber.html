@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Éticas de la felicidad y del deber · FiloAlquipir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF9F5;
+    --cream-dark: #F0EDE4;
+    --terracotta: #D97757;
+    --terracotta-light: #F0C4B0;
+    --terracotta-dark: #B85C3A;
+    --gold: #C9A84C;
+    --gold-light: #F5EDD4;
+    --ink: #1C1A17;
+    --ink-mid: #3D3A34;
+    --ink-light: #6B6560;
+    --border: #DDD9CF;
+    --thinker-blue: #4A7B9D;
+    --thinker-green: #5A8A6A;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 19px;
+    line-height: 1.75;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem;
+    height: 52px;
+  }
+  .topbar-left { display: flex; align-items: center; gap: 1rem; }
+  .topbar .phi { font-family: 'Instrument Serif', serif; font-size: 1.6rem; color: var(--terracotta); }
+  .topbar .site-name { color: #fff; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.8; }
+  .topbar a { color: var(--terracotta-light); font-size: 0.8rem; text-decoration: none; transition: color .2s; }
+  .topbar a:hover { color: var(--terracotta); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: #fff;
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: 'φ';
+    position: absolute; top: -1rem; left: 50%; transform: translateX(-50%);
+    font-family: 'Instrument Serif', serif;
+    font-size: 18rem; opacity: 0.04; color: #fff;
+    pointer-events: none; user-select: none;
+  }
+  .hero-label {
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 1rem; font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 400; line-height: 1.15;
+    margin-bottom: 1.4rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--terracotta-light); }
+  .hero-sub {
+    max-width: 620px; margin: 0 auto;
+    color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.7;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  .content-wrap { max-width: 800px; margin: 0 auto; }
+
+  /* ── SECTIONS ── */
+  section { padding: 4rem 0; }
+  section + section { border-top: 1px solid var(--border); }
+
+  h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    font-weight: 400; color: var(--ink);
+    margin-bottom: 1.6rem; line-height: 1.2;
+  }
+  h2 .num {
+    color: var(--terracotta); font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif; font-weight: 600;
+    letter-spacing: 0.1em; display: block; margin-bottom: 0.3rem;
+    text-transform: uppercase;
+  }
+  h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.4rem; font-weight: 400; font-style: italic;
+    color: var(--ink-mid); margin: 2.5rem 0 1rem;
+  }
+
+  p { margin-bottom: 1.4rem; color: var(--ink-mid); }
+  p:last-child { margin-bottom: 0; }
+
+  strong { color: var(--ink); font-weight: 600; }
+  em { font-style: italic; }
+
+  /* ── QUOTE BOX ── */
+  .quote-box {
+    border-left: 4px solid var(--gold);
+    background: var(--gold-light);
+    padding: 1.4rem 1.8rem;
+    margin: 2.2rem 0;
+    border-radius: 0 8px 8px 0;
+    position: relative;
+  }
+  .quote-box::before {
+    content: '"';
+    font-family: 'Instrument Serif', serif;
+    font-size: 4rem; color: var(--gold);
+    position: absolute; top: -0.5rem; left: 1rem;
+    opacity: 0.35; line-height: 1;
+  }
+  .quote-box p {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.15rem; font-style: italic;
+    color: var(--ink); margin: 0;
+  }
+  .quote-box cite {
+    display: block; margin-top: 0.7rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+    font-style: normal; color: var(--ink-light); font-weight: 500;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: #fff; border: 1.5px solid var(--terracotta);
+    border-radius: 10px; padding: 1.5rem 2rem;
+    margin: 2rem 0;
+  }
+  .highlight-box .hb-title {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--terracotta); font-weight: 600; margin-bottom: 0.8rem;
+  }
+  .highlight-box p { color: var(--ink-mid); margin-bottom: 0.6rem; }
+  .highlight-box p:last-child { margin: 0; }
+
+  /* ── THINKER CARDS ── */
+  .thinker-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.4rem; margin: 2.4rem 0;
+  }
+  .thinker-card {
+    background: #fff; border-radius: 12px;
+    border-top: 4px solid var(--terracotta);
+    padding: 1.5rem 1.6rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    opacity: 0; transform: translateY(20px);
+    transition: opacity .5s ease, transform .5s ease, box-shadow .2s;
+  }
+  .thinker-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.1); }
+  .thinker-card.visible { opacity: 1; transform: translateY(0); }
+  .thinker-card.blue { border-top-color: var(--thinker-blue); }
+  .thinker-card.green { border-top-color: var(--thinker-green); }
+  .thinker-card .tc-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.2rem; color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .thinker-card .tc-dates {
+    font-size: 0.75rem; color: var(--ink-light);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 0.9rem; font-weight: 500;
+  }
+  .thinker-card .tc-concept {
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--terracotta); text-transform: uppercase;
+    letter-spacing: 0.08em; margin-bottom: 0.6rem;
+  }
+  .thinker-card.blue .tc-concept { color: var(--thinker-blue); }
+  .thinker-card.green .tc-concept { color: var(--thinker-green); }
+  .thinker-card p { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.6; margin: 0; }
+
+  /* ── CONCEPT GRID ── */
+  .concept-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem; margin: 2rem 0;
+  }
+  .concept-item {
+    background: var(--cream-dark); border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    border-bottom: 3px solid var(--terracotta);
+    opacity: 0; transform: translateY(16px);
+    transition: opacity .4s ease, transform .4s ease;
+  }
+  .concept-item.visible { opacity: 1; transform: translateY(0); }
+  .concept-item .ci-term {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.05rem; color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .concept-item p { font-size: 0.88rem; color: var(--ink-light); margin: 0; line-height: 1.55; }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-table {
+    width: 100%; border-collapse: collapse;
+    margin: 2rem 0; font-size: 0.92rem;
+    border-radius: 10px; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+  .compare-table th {
+    background: var(--ink); color: #fff;
+    padding: 0.9rem 1.2rem; text-align: left;
+    font-weight: 500; font-size: 0.82rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .compare-table th.col-eth { color: var(--terracotta-light); }
+  .compare-table th.col-dut { color: var(--thinker-blue); opacity: 0.9; }
+  .compare-table td {
+    padding: 0.85rem 1.2rem; color: var(--ink-mid);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top; background: #fff;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table td:first-child { color: var(--ink); font-weight: 500; font-size: 0.85rem; background: var(--cream-dark); }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    display: flex; align-items: center; gap: 1rem;
+    margin: 1rem 0;
+  }
+  .section-divider span { font-family: 'Instrument Serif', serif; font-size: 1.4rem; color: var(--terracotta); }
+  .section-divider::before, .section-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 2.5rem 1rem;
+    font-size: 0.82rem;
+  }
+  footer .phi-footer { font-family: 'Instrument Serif', serif; font-size: 2rem; color: var(--terracotta); display: block; margin-bottom: 0.5rem; }
+  footer a { color: var(--terracotta-light); text-decoration: none; }
+
+  /* ── REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .hero { padding: 3.5rem 1.2rem 3rem; }
+    .hero::before { font-size: 10rem; }
+    .container { padding: 0 1.2rem; }
+    section { padding: 2.8rem 0; }
+    .thinker-grid { grid-template-columns: 1fr; }
+    .concept-grid { grid-template-columns: 1fr 1fr; }
+    .compare-table { font-size: 0.82rem; }
+    .compare-table th, .compare-table td { padding: 0.7rem 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-left">
+    <span class="phi">φ</span>
+    <span class="site-name">FiloAlquipir</span>
+  </div>
+  <a href="#">filoalquipir.github.io</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <p class="hero-label">Historia de la Filosofía · Ética</p>
+  <h1>Éticas de la <em>felicidad</em><br>y del <em>deber</em></h1>
+  <p class="hero-sub">Dos grandes tradiciones del pensamiento moral: la búsqueda del bien que nos hace florecer y la exigencia incondicional de lo que debemos hacer</p>
+</header>
+
+<!-- INTRODUCCIÓN -->
+<section>
+  <div class="container">
+    <div class="content-wrap">
+      <h2><span class="num">01</span>El gran debate de la ética</h2>
+
+      <p>Cuando nos preguntamos cómo debemos vivir, qué acciones son buenas y cuáles son malas, o qué clase de personas deberíamos ser, entramos de lleno en el territorio de la ética. Esta disciplina filosófica ha recibido respuestas muy diferentes a lo largo de la historia, pero dos grandes orientaciones concentran buena parte del debate moral de Occidente: las <strong>éticas de la felicidad</strong> —también llamadas <em>eudaimonistas</em> o teleológicas— y las <strong>éticas del deber</strong> —conocidas como <em>deontológicas</em>.</p>
+
+      <p>Ambas tradiciones parten de preguntas radicalmente distintas. Las éticas de la felicidad se preguntan: <em>¿qué debemos hacer para alcanzar el bien supremo y vivir bien?</em> Las éticas del deber se preguntan, en cambio: <em>¿qué debemos hacer simplemente porque es lo correcto, con independencia de lo que nos reporte?</em> La diferencia no es menor: en el primer caso, la moral está al servicio de un fin deseable; en el segundo, la moral es ella misma un fin en sí mismo.</p>
+
+      <div class="highlight-box reveal">
+        <p class="hb-title">⚑ Para entender bien la diferencia</p>
+        <p>Las éticas de la felicidad son <strong>éticas materiales</strong>: nos dicen qué bien debemos buscar (el placer, la virtud, la autorrealización...). Las éticas del deber son <strong>éticas formales</strong>: no nos dicen qué contenido debe tener la acción buena, sino cuál debe ser su forma —actuar por deber, conforme a una ley racional universal.</p>
+      </div>
+
+      <p>Esta tensión ha atravesado la filosofía desde la Antigüedad griega hasta la Modernidad ilustrada, y sigue siendo decisiva hoy cuando pensamos en dilemas morales reales. Conocer ambas tradiciones en profundidad no es solo un ejercicio académico: es una forma de preguntarse, con más rigor y honestidad, qué queremos de la vida y qué le debemos a los demás.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ÉTICAS DE LA FELICIDAD -->
+<section>
+  <div class="container">
+    <div class="content-wrap">
+      <h2><span class="num">02</span>Las éticas de la felicidad</h2>
+
+      <p>La idea de que la moral tiene que ver con la búsqueda de la felicidad o del bien humano nace en la Grecia clásica y domina el pensamiento ético durante más de quince siglos. Su punto de partida es la convicción de que los seres humanos actuamos siempre <em>tendiendo hacia algo</em>, persiguiendo algún fin. La pregunta ética es, por tanto, cuál es ese fin supremo que hace que todo lo demás valga la pena.</p>
+
+      <h3>Aristóteles y la eudaimonía</h3>
+
+      <p>El gran arquitecto de la ética de la felicidad es <strong>Aristóteles</strong> (384-322 a.C.). En su obra <em>Ética a Nicómaco</em>, Aristóteles sostiene que todos los seres humanos buscan la <strong>eudaimonía</strong>, término que se traduce como «felicidad» pero que significa algo mucho más rico: florecimiento, realización plena, vida lograda. La eudaimonía no es una sensación pasajera de placer, sino un estado estable que resulta de vivir de acuerdo con nuestra naturaleza más propia.</p>
+
+      <p>Para Aristóteles, lo que distingue al ser humano de los demás seres vivos es su capacidad racional. Por eso, la vida verdaderamente feliz es aquella en la que la razón gobierna la conducta y nos lleva a actuar con <strong>virtud</strong> (<em>areté</em>). La virtud no es un don innato ni una regla que se sigue mecánicamente: es un <em>hábito adquirido</em> mediante la práctica repetida. Se aprende a ser justo siendo justo, se aprende a ser valiente siendo valiente.</p>
+
+      <div class="quote-box reveal">
+        <p>La felicidad es una actividad del alma conforme a la virtud perfecta.</p>
+        <cite>— Aristóteles, <em>Ética a Nicómaco</em>, I, 13</cite>
+      </div>
+
+      <p>Aristóteles distingue entre <strong>virtudes éticas</strong> —aquellas que regulan los deseos y las pasiones, como el valor, la templanza o la justicia— y <strong>virtudes dianoéticas</strong> —las que perfeccionan la razón, siendo la más alta la sabiduría contemplativa o <em>sophia</em>. Todas las virtudes éticas comparten una misma estructura: son el <strong>término medio</strong> entre dos extremos viciosos. El valor está entre la cobardía y la temeridad; la generosidad, entre la avaricia y la prodigalidad.</p>
+
+      <p>Un aspecto fundamental del pensamiento aristotélico es su carácter social. Para Aristóteles, el ser humano es un <em>animal político</em> (<em>zōon politikón</em>): solo puede alcanzar su plena realización en el seno de la comunidad, en la <em>polis</em>. La ética y la política son, en su sistema, inseparables: la ciudad existe para hacer posible la vida buena de sus ciudadanos.</p>
+
+      <h3>Epicuro y el hedonismo refinado</h3>
+
+      <p>Contemporáneo de los sucesores de Aristóteles, <strong>Epicuro</strong> (341-270 a.C.) propone una respuesta diferente: el bien supremo es el <strong>placer</strong> (<em>hedoné</em>). Sin embargo, el hedonismo epicúreo es mucho más matizado de lo que suele suponerse. Epicuro no defiende la búsqueda desenfrenada de placeres intensos, sino una concepción del placer que lo identifica con la <strong>ausencia de dolor</strong> y la <strong>serenidad del alma</strong>.</p>
+
+      <p>Epicuro distingue cuidadosamente entre tipos de placeres. Los <strong>placeres cinéticos</strong> son aquellos que implican movimiento y excitación —el placer de comer, beber o la ambición—. Los <strong>placeres catastemáticos</strong>, en cambio, son estados de equilibrio y reposo: la <strong>aponía</strong> (ausencia de dolor corporal) y, sobre todo, la <strong>ataraxia</strong> (tranquilidad del alma, ausencia de perturbaciones). Para Epicuro, estos segundos son superiores porque son más estables y no generan dependencia ni sufrimiento posterior.</p>
+
+      <div class="quote-box reveal">
+        <p>Cuando decimos que el placer es el fin, no hablamos de los placeres de los libertinos ni de los que consisten en el goce sensual, como creen algunos que ignoran nuestra doctrina. Hablamos de la ausencia de dolor en el cuerpo y de perturbación en el alma.</p>
+        <cite>— Epicuro, <em>Carta a Meneceo</em></cite>
+      </div>
+
+      <p>El camino epicúreo hacia la felicidad pasa por tres elementos fundamentales: la <strong>amistad</strong> —considerada el mayor bien disponible para el ser humano—, la <strong>filosofía</strong> —que nos libera del miedo a los dioses y a la muerte—, y la vida <strong>retirada</strong> del mundanal ruido político (<em>lathe biōsas</em>: «vive oculto»). En su jardín de Atenas, Epicuro y sus discípulos buscaban esa vida sencilla, reflexiva y plena de afecto.</p>
+
+      <h3>Los estoicos: virtud y conformidad con la naturaleza</h3>
+
+      <p>Los estoicos —Zenón de Citio, Epicteto, Marco Aurelio, Séneca— ofrecen una tercera versión de la ética de la felicidad. Para ellos, el único bien verdadero es la <strong>virtud</strong>, y el único mal verdadero es el vicio. Todo lo demás —salud, riqueza, fama— son «cosas indiferentes» (<em>adiáphoron</em>) sobre las que no merece la pena perder la serenidad. La felicidad consiste en vivir conforme a la razón y a la naturaleza, aceptando con ecuanimidad todo aquello que no depende de nosotros.</p>
+
+      <p>La famosa distinción estoica entre lo que <em>depende de nosotros</em> (nuestros juicios, deseos, impulsos) y lo que <em>no depende de nosotros</em> (el cuerpo, la reputación, la riqueza) es uno de los legados más influyentes de toda la filosofía práctica antigua.</p>
+    </div>
+
+    <!-- THINKER CARDS -->
+    <div class="thinker-grid" style="margin-top:3rem;">
+      <div class="thinker-card">
+        <div class="tc-name">Aristóteles</div>
+        <div class="tc-dates">384–322 a.C.</div>
+        <div class="tc-concept">Eudaimonismo</div>
+        <p>La felicidad es actividad conforme a la virtud. Se alcanza mediante el cultivo de hábitos racionales en la comunidad política.</p>
+      </div>
+      <div class="thinker-card green">
+        <div class="tc-name">Epicuro</div>
+        <div class="tc-dates">341–270 a.C.</div>
+        <div class="tc-concept">Hedonismo</div>
+        <p>El bien supremo es el placer entendido como ausencia de dolor y serenidad del alma. La amistad y la filosofía son sus caminos.</p>
+      </div>
+      <div class="thinker-card blue">
+        <div class="tc-name">Marco Aurelio / Epicteto</div>
+        <div class="tc-dates">ss. I–II d.C.</div>
+        <div class="tc-concept">Estoicismo</div>
+        <p>La virtud es el único bien. La felicidad consiste en aceptar lo que no podemos cambiar y gobernar lo que sí depende de nosotros.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÉTICAS DEL DEBER -->
+<section>
+  <div class="container">
+    <div class="content-wrap">
+      <h2><span class="num">03</span>Las éticas del deber</h2>
+
+      <p>La gran revolución de la ética moderna llega con <strong>Immanuel Kant</strong> (1724-1804). Frente a la tradición que hacía depender la moral de algún bien externo —la felicidad, el placer, la perfección—, Kant propone una ética radicalmente diferente: la moral no tiene nada que ver con lo que queremos conseguir, sino exclusivamente con <strong>cómo actuamos</strong> y, más precisamente, con el <em>motivo</em> por el que actuamos.</p>
+
+      <h3>La buena voluntad y el deber</h3>
+
+      <p>Kant abre su <em>Fundamentación de la metafísica de las costumbres</em> con una de las frases más famosas de toda la filosofía: «En el mundo, e incluso fuera de él, no hay nada que pueda considerarse bueno sin restricción, excepto la <strong>buena voluntad</strong>». Ni la inteligencia, ni el valor, ni la salud, ni siquiera la felicidad son buenos en sí mismos: pueden usarse para el mal. Solo la voluntad que quiere hacer el bien porque reconoce que debe hacerlo es incondicionalmente buena.</p>
+
+      <div class="quote-box reveal">
+        <p>Obra solo según aquella máxima por la cual puedas querer al mismo tiempo que se convierta en ley universal.</p>
+        <cite>— Kant, <em>Fundamentación de la metafísica de las costumbres</em>, §421</cite>
+      </div>
+
+      <p>Para Kant, actuar moralmente significa actuar <strong>por deber</strong>, no simplemente <em>conforme al deber</em>. Un comerciante que es honesto porque así le va mejor en los negocios actúa conforme al deber, pero no <em>por</em> deber: su motivo real es el interés propio. En cambio, quien es honesto porque comprende racionalmente que la honestidad es lo que debe hacerse —aunque le cueste, aunque nadie lo vea, aunque no le reporte ningún beneficio— actúa auténticamente en sentido moral.</p>
+
+      <p>Esta exigencia es lo que Kant llama el <strong>imperativo categórico</strong>: un mandato de la razón que obliga de forma incondicional, sin «si» ni «pero». A diferencia de los imperativos hipotéticos —«si quieres ser feliz, haz X»—, el imperativo categórico dice simplemente: <em>haz X</em>. La ley moral no negocia con las circunstancias.</p>
+
+      <h3>Las formulaciones del imperativo categórico</h3>
+
+      <p>Kant presenta el imperativo categórico en varias formulaciones que, según él, expresan el mismo principio desde ángulos distintos.</p>
+
+      <p>La primera y más conocida es la <strong>fórmula de la universalidad</strong>: «Obra solo según aquella máxima por la cual puedas querer al mismo tiempo que se convierta en ley universal». Antes de actuar, debo preguntarme: ¿podría yo querer que todos actuaran como voy a actuar yo? Si la respuesta es no —si la máxima de mi acción se destruye al universalizarse—, entonces la acción es moralmente incorrecta. Mentir, por ejemplo, no puede universalizarse: si todos mintieran siempre, la institución del lenguaje y la confianza desaparecerían, y la mentira misma perdería su sentido.</p>
+
+      <p>La segunda formulación es la <strong>fórmula de la humanidad</strong>: «Obra de tal manera que uses a la humanidad, tanto en tu persona como en la de cualquier otro, siempre al mismo tiempo como fin, y nunca solamente como medio». Todo ser racional tiene una <strong>dignidad</strong> que lo hace invaluable: nunca es lícito instrumentalizar a una persona, tratarla como si fuera simplemente un medio para nuestros fines. Esta formulación está en la base de toda la tradición de los derechos humanos.</p>
+
+      <div class="highlight-box reveal">
+        <p class="hb-title">🔑 Conceptos clave kantianos</p>
+        <p><strong>Autonomía:</strong> La capacidad de la razón para darse a sí misma su propia ley moral, sin depender de inclinaciones ni autoridades externas. El ser racional es <em>legislador</em> y <em>súbdito</em> de la ley moral al mismo tiempo.</p>
+        <p><strong>Heteronomía:</strong> Actuar motivado por algo externo a la razón —el placer, la tradición, el miedo, la autoridad—. Para Kant, la heteronomía es incompatible con la moral genuina.</p>
+        <p><strong>Reino de los fines:</strong> La idea de una comunidad ideal en la que todos los seres racionales se tratan mutuamente como fines en sí mismos. Es el horizonte utópico de la ética kantiana.</p>
+      </div>
+
+      <h3>Ética formal frente a ética material</h3>
+
+      <p>Una distinción técnica pero esencial: Kant llama <strong>éticas materiales</strong> a todas aquellas que definen la moralidad en función de un contenido concreto —la felicidad, el placer, la virtud, la perfección—. Todas ellas son, en su opinión, deficientes porque ese contenido es empírico (variable según personas y culturas) y condicionado (solo me obliga si quiero alcanzar ese fin). La ética kantiana, en cambio, es una <strong>ética formal</strong>: no nos dice qué debemos buscar, sino cuál debe ser la <em>forma</em> de nuestra voluntad para que sea moralmente buena. Esa forma es la conformidad con la ley universal de la razón.</p>
+
+    </div>
+
+    <!-- CONCEPT GRID -->
+    <div class="concept-grid" style="margin-top: 2.5rem;">
+      <div class="concept-item">
+        <div class="ci-term">Imperativo categórico</div>
+        <p>Mandato racional incondicional. Obliga sin importar deseos ni consecuencias.</p>
+      </div>
+      <div class="concept-item">
+        <div class="ci-term">Buena voluntad</div>
+        <p>El único bien incondicionado. Voluntad que actúa por deber, no por inclinación.</p>
+      </div>
+      <div class="concept-item">
+        <div class="ci-term">Autonomía</div>
+        <p>La razón se da su propia ley. Fundamento de la dignidad y la libertad humanas.</p>
+      </div>
+      <div class="concept-item">
+        <div class="ci-term">Dignidad</div>
+        <p>Valor absoluto del ser racional. Prohíbe usarlo solo como medio.</p>
+      </div>
+      <div class="concept-item">
+        <div class="ci-term">Ética formal</div>
+        <p>No dictamina fines, sino la forma de la voluntad: universalidad y racionalidad.</p>
+      </div>
+      <div class="concept-item">
+        <div class="ci-term">Deber</div>
+        <p>Necesidad de actuar por respeto a la ley moral, con independencia del resultado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARACIÓN -->
+<section>
+  <div class="container">
+    <div class="content-wrap">
+      <h2><span class="num">04</span>Confrontación de las dos tradiciones</h2>
+
+      <p>Puestas frente a frente, las éticas de la felicidad y las éticas del deber revelan diferencias profundas que no son meras cuestiones técnicas: afectan a la imagen que tenemos del ser humano, de la razón y de la vida moral.</p>
+
+      <p>Las éticas eudaimonistas entienden al ser humano como un ser dotado de una <strong>naturaleza que debe realizarse</strong>. La moral es el camino hacia esa realización: actuar bien es lo mismo que actuar conforme a lo que somos en lo más profundo. Hay algo cálido y esperanzador en esta perspectiva: la moral no es una carga, sino la forma en que nos convertimos en lo que podemos ser. Sus filósofos hablan de virtudes, de modelos de vida, de comunidad, de florecimiento.</p>
+
+      <p>Las éticas del deber, en cambio, entienden al ser humano ante todo como un <strong>ser racional y libre</strong>, capaz de imponerse obligaciones que trascienden sus inclinaciones naturales. La moral es aquí algo más austero: una exigencia que la razón se hace a sí misma y que puede entrar en conflicto con nuestros deseos más inmediatos. Pero hay también algo elevado en esta perspectiva: la idea de que el valor moral de una persona no depende de lo que ha logrado o de lo que siente, sino de si ha obrado con honestidad y respeto hacia los demás.</p>
+
+      <table class="compare-table reveal">
+        <thead>
+          <tr>
+            <th>Dimensión</th>
+            <th class="col-eth">Éticas de la felicidad</th>
+            <th class="col-dut">Éticas del deber</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pregunta central</td>
+            <td>¿Qué debo hacer para vivir bien?</td>
+            <td>¿Qué debo hacer por ser lo correcto?</td>
+          </tr>
+          <tr>
+            <td>Tipo de ética</td>
+            <td>Material y teleológica</td>
+            <td>Formal y deontológica</td>
+          </tr>
+          <tr>
+            <td>Fundamento</td>
+            <td>El bien supremo (eudaimonía, placer...)</td>
+            <td>La ley racional universal</td>
+          </tr>
+          <tr>
+            <td>Valor moral</td>
+            <td>Depende del fin alcanzado o buscado</td>
+            <td>Depende del motivo (actuar por deber)</td>
+          </tr>
+          <tr>
+            <td>Papel de la felicidad</td>
+            <td>Es el fin último de la vida moral</td>
+            <td>No es fundamento, aunque puede ser consecuencia</td>
+          </tr>
+          <tr>
+            <td>Representantes</td>
+            <td>Aristóteles, Epicuro, Estoicos</td>
+            <td>Kant (y la tradición deontológica)</td>
+          </tr>
+          <tr>
+            <td>Imagen del ser humano</td>
+            <td>Ser natural que busca su realización</td>
+            <td>Ser racional y autónomo</td>
+          </tr>
+          <tr>
+            <td>Crítica principal</td>
+            <td>¿No es relativo el bien que perseguimos?</td>
+            <td>¿No es demasiado rígida, ajena a la vida?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Tensiones y complementariedades</h3>
+
+      <p>Las críticas que ambas tradiciones se dirigen mutuamente son reveladoras. Desde la perspectiva eudaimonista, la ética kantiana resulta excesivamente abstracta y desvinculada de la realidad humana concreta: ¿puede realmente la razón pura dictar la moral sin tener en cuenta quiénes somos, qué sentimos, en qué comunidad vivimos? El filósofo aristotélico señalará que Kant parece tratar a los seres humanos como si fueran puras razones incorpóreas, olvidando que somos también cuerpo, emoción, historia, comunidad.</p>
+
+      <p>Desde la perspectiva kantiana, en cambio, las éticas de la felicidad son sospechosas de relativismo: si el bien varía según las culturas, las épocas o los individuos, ¿cómo puede fundamentarse en él una moral universal? Kant también señala que confundir felicidad con moral lleva a una grave confusión: el malo puede ser feliz, y el bueno puede sufrir; si identificamos moral con bienestar, perdemos el criterio para condenar la injusticia que produce beneficios.</p>
+
+      <p>Muchos filósofos contemporáneos han intentado superar esta oposición. La <strong>ética de las virtudes</strong> contemporánea (Alasdair MacIntyre, Martha Nussbaum) retoma el legado aristotélico poniendo el acento en el carácter moral y en las condiciones sociales de la vida buena. El <strong>utilitarismo</strong> (Bentham, Mill) es otra forma de ética de la felicidad que intenta universalizar el bien al maximizar el bienestar del mayor número. Y dentro de la tradición kantiana han surgido propuestas como la de Habermas, que reformula el imperativo categórico en términos de un diálogo racional entre todos los afectados.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RELEVANCIA -->
+<section>
+  <div class="container">
+    <div class="content-wrap">
+      <h2><span class="num">05</span>Por qué esta tensión sigue importando</h2>
+
+      <p>La oposición entre éticas de la felicidad y éticas del deber no es solo historia de la filosofía: reaparece cada vez que nos enfrentamos a un dilema moral real. Cuando un médico se pregunta si debe mentir a un paciente terminal para ahorrarle sufrimiento, está eligiendo entre la lógica del bien (el bienestar del paciente) y la lógica del deber (la obligación de decir la verdad). Cuando debatimos sobre si el fin justifica los medios en política, estamos en el corazón de este dilema.</p>
+
+      <p>Las éticas de la felicidad nos recuerdan que la moral no puede estar completamente desconectada de la vida, de las emociones, de los vínculos concretos que nos constituyen como personas. Aristóteles tenía razón en insistir en que no podemos entender la bondad de una acción sin entender el contexto en que se produce, el tipo de persona que la realiza y la vida que hace posible.</p>
+
+      <p>Las éticas del deber, por su parte, nos protegen de la tentación de justificar cualquier cosa en nombre de la felicidad o del bienestar. Hay cosas que simplemente no deben hacerse: torturar, instrumentalizar, mentir sistemáticamente, violar la dignidad de las personas. La firmeza de Kant al afirmar que hay deberes que no admiten excepciones sigue siendo una salvaguarda moral imprescindible ante el poder y la tentación de la conveniencia.</p>
+
+      <div class="highlight-box reveal">
+        <p class="hb-title">💡 Reflexión final</p>
+        <p>Quizá la pregunta no sea cuál de las dos tradiciones tiene razón, sino cómo aprender de ambas. Una moral madura necesita tanto la riqueza de la virtud aristotélica —que nos forma como personas capaces de discernir y de vivir bien— como la firmeza del deber kantiano —que traza límites que no pueden violarse ni siquiera en nombre del bien—. La filosofía moral, en este sentido, no termina con ninguno de sus grandes maestros: empieza de nuevo con cada persona que se hace la pregunta: <em>¿cómo debo vivir?</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="phi-footer">φ</span>
+  <p>FiloAlquipir · IES Alquipir, Cehegín · Historia de la Filosofía</p>
+  <p style="margin-top:.4rem;"><a href="#">filoalquipir.github.io</a></p>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // stagger children with .concept-item or .thinker-card
+        e.target.querySelectorAll('.concept-item, .thinker-card').forEach((child, i) => {
+          setTimeout(() => child.classList.add('visible'), i * 90);
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal, .thinker-grid, .concept-grid').forEach(el => observer.observe(el));
+
+  // Also observe individual cards/items that may be outside .reveal
+  document.querySelectorAll('.thinker-card, .concept-item').forEach(el => {
+    const parent = el.closest('.thinker-grid, .concept-grid');
+    if (!parent) observer.observe(el);
+  });
+</script>
+</body>
+</html>
